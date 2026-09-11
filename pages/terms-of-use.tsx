@@ -23,7 +23,7 @@ const Terms: NextPage = () => {
 
       <h2>What changed in this update</h2>
       <p>
-        This update aligns the 14-day full-access trial with how intori works. No payment method is required to start the trial, the trial begins when you first keep a result, and it does not turn into a paid subscription automatically. It also explains Beta access, immediate billing when you choose a paid plan, and what remains available after a trial or paid period ends. The AI processors and data providers we use are named in our <Link href="/privacy-policy">Privacy Policy</Link>.
+        This update aligns the 14-day full-access trial with how intori works. No payment method is required to start the trial, the trial begins when you complete onboarding, and it does not turn into a paid subscription automatically. It also explains Beta access, immediate billing when you choose a paid plan, and what remains available after a trial or paid period ends. The AI processors and data providers we use are named in our <Link href="/privacy-policy">Privacy Policy</Link>.
       </p>
 
       <p>
@@ -155,7 +155,7 @@ const Terms: NextPage = () => {
         intori is sold as a subscription. One subscription covers your whole household.
       </p>
       <p>
-        <strong>Free trial.</strong> Eligible new accounts get a 14-day trial with full access to intori. No payment method is required to start it. The trial begins the first time you keep a result, not when you create an account, complete onboarding, view a personalized home screen, or receive a result you do not keep. If you never keep a result, the trial never starts. The trial does not become a paid subscription automatically. When it ends, you must choose a paid plan before intori will create or refresh another personalized result.
+        <strong>Free trial.</strong> Eligible new accounts get a 14-day trial with full access to intori. No payment method is required to start it. The trial begins when you complete onboarding, not when you create an account. Its end date is fixed at that point and is shown to you in the app. If you never complete onboarding, the trial does not start and intori does not produce personalized results for you. The trial does not become a paid subscription automatically. When it ends, you must choose a paid plan before intori will create or refresh another personalized result.
       </p>
       <p>
         <strong>Beta access.</strong> We may give testers full access without charge while intori is in Beta. Beta access does not start the 14-day trial. We may end the Beta period or change Beta access after reasonable notice. We may also give a particular account continued Beta or lifetime access at our discretion.
@@ -167,7 +167,7 @@ const Terms: NextPage = () => {
         <strong>Automatic renewal.</strong> Subscriptions renew automatically until you cancel. An annual plan renews every year. A monthly plan renews every month. At the start of each new period we charge the then-current price for your plan to the payment method on file. If we change the price, we will tell you before the change takes effect, and you will have a chance to cancel first.
       </p>
       <p>
-        <strong>When you are charged.</strong> The first charge is made when you choose and confirm a paid plan, including if you subscribe before your 14-day trial ends. Paid access begins immediately and replaces any remaining trial time. Renewal charges are made at the start of each new billing period. For App Store purchases, Apple may charge within 24 hours before the end of the current period.
+        <strong>When you are charged.</strong> Choosing a paid plan does not start a further free period. There is no introductory or promotional free period attached to any plan on any platform. The first charge is made when you choose and confirm a paid plan, including if you subscribe before your 14-day trial ends. Paid access begins immediately and replaces any remaining trial time. Renewal charges are made at the start of each new billing period. For App Store purchases, Apple may charge within 24 hours before the end of the current period.
       </p>
       <p>
         <strong>How to cancel.</strong> You can cancel at any time. If you subscribed in the iOS app, cancel in your Apple account subscription settings on your device. If you subscribed on the web, cancel in your intori account settings or by emailing <a href="mailto:contact@tuum.tech">contact@tuum.tech</a>. To avoid the next charge, cancel at least 24 hours before the current period ends.

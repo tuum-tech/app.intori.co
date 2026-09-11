@@ -803,6 +803,38 @@
   text-wrap: pretty;
 }
 
+.priceSample {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 10px 18px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Marks the line as a sample of app UI rather than a claim about the reader's
+   own account. The date inside it is illustrative and will need refreshing. */
+.priceSampleLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.priceFine {
+  max-width: 760px;
+  margin: 22px auto 0;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
 .priceLapse {
   max-width: 760px;
   margin: 24px auto 0;
@@ -1078,6 +1110,17 @@
 
   .todayArt {
     height: 150px;
+  }
+
+  /* The pill squeezes badly at this width, so the label moves onto its own
+     line and the whole thing becomes a block rather than an inline chip. */
+  .priceSample {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    border-radius: var(--radius-card);
+    padding: 14px 18px;
   }
 
   .priceCard {

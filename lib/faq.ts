@@ -121,7 +121,8 @@ export const FAQ: FaqItem[] = [
     question: "What does intori cost?",
     answer: [
       "intori is $8.99 a month, or $79 a year. One subscription covers your whole household.",
-      "Before that, you get 14 days free. The trial does not start when you sign up. It starts the first time you keep something, so the clock only runs once intori has found you something worth keeping. If you never keep anything, the trial never starts."
+      "Before that, you get 14 days free. The trial starts when you finish setup, not when you sign up. It is a real date, and the app shows it to you, so you always know how long you have left.",
+      "Choosing a plan starts billing straight away. There is no extra free period on top of your fourteen days, on the web or on iPhone."
     ]
   },
   {
