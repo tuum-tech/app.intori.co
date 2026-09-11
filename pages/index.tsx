@@ -175,7 +175,7 @@ export default function HomePage() {
         description="intori watches for the things your household would hate to miss. The game worth staying up for. Who's playing nearby. The show you're both waiting on. And yes, dinner. Early enough to say yes."
         canonicalPath="/"
         ogDescription="intori watches for what your household would hate to miss, and gets it to you early enough to say yes."
-        ogImageAlt="intori card reading Something to look forward to"
+        ogImageAlt="intori card reading Something to look forward to, with tiles for Sports, Music, Shows, and Food"
       />
 
       <div className={styles.page}>
