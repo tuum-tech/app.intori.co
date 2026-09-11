@@ -402,22 +402,38 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Pricing. The trial trigger is the differentiator and it is real:
-              recordFirstKeepAccessReceipt in the app is the ONLY writer of
-              trialStartedAt, so the clock genuinely starts on the first kept
-              item and a household that never keeps never starts one. Do not
-              soften this to "when you sign up" without changing the app first.
+          {/* Pricing.
+
+              The trial starts when onboarding completes. In the app,
+              resolveAccountAccessVerdict calls materializeOnboardingTrial off
+              onboardingCompletedAt; an account with no onboardingCompletedAt
+              gets unstartedTrialVerdict and no trial at all.
+
+              The previous first-keep trigger was REMOVED on 2026-09-11
+              (intori-app #2864). Do not reintroduce first-keep language here.
+              It was never true for three of the four lanes: saving a meal,
+              planning a night, and following a team, artist or series all
+              failed to start a clock.
+
+              Nothing here may imply that subscribing starts a free period.
+              There is deliberately no Apple introductory offer and no Stripe
+              trial period; the app-side 14 days IS the trial, and choosing a
+              plan begins billing immediately.
 
               Amounts mirror src/config/stripeSubscriptionPlans.ts in the app
               repo: 899 monthly, 7_900 annual. If those move, this moves. */}
           <section id="pricing" className={styles.priceSection}>
             <div className={styles.container}>
               <div className={styles.secHead}>
-                <h2 className={styles.secTitle}>Free until it earns it</h2>
+                <h2 className={styles.secTitle}>Fourteen days, then you decide</h2>
                 <p className={styles.secSub}>
-                  Your 14 days do not start when you sign up. They start the first time
-                  you keep something, so the clock only runs once intori has actually
-                  found you something worth keeping.
+                  Your 14 days start when you finish setup, not when you sign up. It is a
+                  real date, and the app shows it to you, so you are never guessing how
+                  long you have left.
+                </p>
+                <p className={styles.priceSample}>
+                  <span className={styles.priceSampleLabel}>In the app</span>
+                  Full access until 25 September 2026.
                 </p>
               </div>
 
@@ -427,7 +443,10 @@ export default function HomePage() {
                   <p className={styles.priceAmount}>
                     $8.99<span className={styles.pricePer}>/month</span>
                   </p>
-                  <p className={styles.priceNote}>Cancel any time.</p>
+                  <p className={styles.priceNote}>
+                    Cancel any time. You keep access through the period you have already
+                    paid for.
+                  </p>
                 </div>
                 <div className={`${styles.priceCard} ${styles.priceCardFeature}`}>
                   <p className={styles.pricePlan}>
@@ -440,6 +459,13 @@ export default function HomePage() {
                   <p className={styles.priceNote}>About $28 less than twelve months at the monthly price.</p>
                 </div>
               </div>
+
+              <p className={styles.priceFine}>
+                No card up front, and nothing charges itself when the 14 days are up.
+                Choosing a plan starts billing straight away, so there is no second free
+                period on top of your fourteen days. Setup is what starts the clock, so
+                an account that never finishes it never starts one.
+              </p>
 
               <div className={styles.priceLapse}>
                 <h3 className={styles.priceLapseTitle}>If you stop paying</h3>
@@ -472,8 +498,8 @@ export default function HomePage() {
                 <AppCtas />
               </div>
               <p className={styles.convertNote}>
-                14 days free, starting when you keep your first pick. Then $8.99 a month
-                or $79 a year. <a href="#pricing" className={styles.convertNoteLink}>See what a lapse does</a>.
+                14 days free, starting when you finish setup. Then $8.99 a month or $79
+                a year. <a href="#pricing" className={styles.convertNoteLink}>See what a lapse does</a>.
               </p>
             </div>
           </section>
