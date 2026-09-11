@@ -4,11 +4,33 @@
 // mini-app is a secondary path; the Farcaster frame is legacy/test only.
 export const APP_URL = 'https://app.intori.co'
 
-// iPhone beta destination (TestFlight or invite link). Staged by configuration:
-// while this is empty the site renders a quiet "iPhone beta coming soon" status
-// chip; once set, the same spots promote to a primary "Join the iPhone beta"
-// button and the web CTA drops to the ghost style. No code change required.
+// iPhone beta destination (TestFlight or invite link). Superseded by
+// IOS_APP_STORE_URL once the App Store listing is live, but kept so the beta
+// can stay staged independently and so an unset App Store var never silently
+// drops an already-working TestFlight link.
 export const IOS_BETA_URL = process.env.NEXT_PUBLIC_IOS_BETA_URL ?? ''
+
+// Public App Store listing. Takes precedence over the beta link: once this is
+// set the iPhone CTA reads "Download on the App Store" everywhere it appears.
+export const IOS_APP_STORE_URL = process.env.NEXT_PUBLIC_IOS_APP_STORE_URL ?? ''
+
+// The single iPhone destination the CTAs and the FAQ both read, so the two
+// surfaces cannot disagree about whether iOS is available or what it is called.
+//
+//   'appstore' -> primary button, "Download on the App Store"
+//   'beta'     -> primary button, "Join the iPhone beta"
+//   'none'     -> quiet non-clickable "iPhone app coming soon" chip
+//
+// Staged entirely by configuration. No code change required to promote either.
+export type IosChannel = 'appstore' | 'beta' | 'none'
+
+export const IOS_CHANNEL: IosChannel = IOS_APP_STORE_URL
+  ? 'appstore'
+  : IOS_BETA_URL
+    ? 'beta'
+    : 'none'
+
+export const IOS_URL = IOS_APP_STORE_URL || IOS_BETA_URL
 
 // Homepage headline variant, staged the same way as IOS_BETA_URL.
 //

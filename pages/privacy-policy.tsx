@@ -40,7 +40,7 @@ const Privacy: NextPage = () => {
 
       <h2>What intori is</h2>
       <p>
-        intori is a household personalization service. You declare preferences and constraints for your household, and intori uses those declared signals to produce daily suggestions with sources attached: what to cook or eat, what to watch, live music and events, and sports. The features that produce those suggestions are called helpers.
+        intori is a household personalization service. You declare preferences and constraints for your household, and intori uses those declared signals to produce daily suggestions with sources attached: what to cook or eat, what to watch, live music and events, and sports. The features that produce those suggestions are organized into lanes: Food, Sports, Shows, and Music.
       </p>
       <p>How your declarations are used:</p>
       <ul>
@@ -85,7 +85,7 @@ const Privacy: NextPage = () => {
 
       <h3>Answers, preferences, and context</h3>
       <p>
-        When you answer questions, complete onboarding, declare constraints, rate results, or interact with helper surfaces, we collect the information you choose to provide. This may include:
+        When you answer questions, complete onboarding, declare constraints, rate results, or interact with result surfaces, we collect the information you choose to provide. This may include:
       </p>
       <ul>
         <li>Answers to questions about preferences, tastes, interests, values, activities, identity, and context.</li>
@@ -126,7 +126,7 @@ const Privacy: NextPage = () => {
 
       <h3>Derived and inferred data</h3>
       <p>
-        intori may create derived data from your activity, such as topic signals, sensitivity tiers, visibility states, your vibe, helper context summaries, and personalization profiles. These derived records help intori decide what questions to ask, what context to include, what to exclude, and what may be relevant to you. Inferred data can change the order of your results. It cannot bind a hard filter, and it cannot override something you declared.
+        intori may create derived data from your activity, such as topic signals, sensitivity tiers, visibility states, your vibe, result context summaries, and personalization profiles. These derived records help intori decide what questions to ask, what context to include, what to exclude, and what may be relevant to you. Inferred data can change the order of your results. It cannot bind a hard filter, and it cannot override something you declared.
       </p>
 
       <h3>Consent and connected app records</h3>
@@ -134,7 +134,7 @@ const Privacy: NextPage = () => {
         When you grant, deny, or revoke consent, we may store consent records, scope, sensitivity level, metadata, timestamps, connected app identifiers, authorization codes, grant status, expiration, revocation status, and receipts showing when a connected app accessed a context bundle.
       </p>
 
-      <h3>AI helper and result data</h3>
+      <h3>AI result data</h3>
       <p>
         When you use AI-assisted features, we may process selected intori context, local context when active, source-search results, your displayed request, generated output, result receipts, feedback, model name, prompt version or hash, token estimates, cost estimates, duration, errors, and related metadata.
       </p>
@@ -191,7 +191,7 @@ const Privacy: NextPage = () => {
 
       <h3>Approximate location</h3>
       <p>
-        The app may ask permission to use your approximate location. If you allow it, we use it to fill in your local context, so helpers can suggest nearby restaurants, venues, and events. The app asks for approximate location, not precise location. We do not track you in the background, we do not build a location history, and we do not infer your home or work address. You can deny the request and type a city instead, and you can change the permission later in the iOS Settings app. The app works either way.
+        The app may ask permission to use your approximate location. If you allow it, we use it to fill in your local context, so intori can suggest nearby restaurants, venues, and events. The app asks for approximate location, not precise location. We do not track you in the background, we do not build a location history, and we do not infer your home or work address. You can deny the request and type a city instead, and you can change the permission later in the iOS Settings app. The app works either way.
       </p>
 
       <h3>Device and diagnostic information</h3>
@@ -214,7 +214,7 @@ const Privacy: NextPage = () => {
         <li>Authenticate users and maintain sessions.</li>
         <li>Build and update your preferences, declared constraints, groups, answers, local context, and personalization state.</li>
         <li>Apply your declared constraints as filters, use inferred signals only to change ranking, and show you which constraints were applied to a result.</li>
-        <li>Generate suggestions, helper results, and context summaries.</li>
+        <li>Generate suggestions, results, and context summaries.</li>
         <li>Decide what to ask you next.</li>
         <li>Let you control topic, group, local context, notification, AI sharing, and connected app consent.</li>
         <li>Process subscriptions, verify purchases, and manage trials, renewals, and cancellations.</li>
@@ -233,11 +233,11 @@ const Privacy: NextPage = () => {
 
       <h3>With AI processors</h3>
       <p>
-        Two of the companies we work with are AI processors. To produce a helper result, intori sends them a limited amount of context. We send what the request needs and no more. We do not send your email address, sign-in identifiers, or payment information to them.
+        Two of the companies we work with are AI processors. To produce a result, intori sends them a limited amount of context. We send what the request needs and no more. We do not send your email address, sign-in identifiers, or payment information to them.
       </p>
       <ul>
         <li><strong>OpenAI.</strong> Used to interpret your request, summarize sources, and write the result. May receive your request text, the declared preferences and dietary constraints relevant to that request, coarse local context, and source material retrieved for the request.</li>
-        <li><strong>Perplexity.</strong> Used for search and retrieval when a helper needs current information. May receive a search query built from your request and the relevant declared preferences, which can include dietary constraints.</li>
+        <li><strong>Perplexity.</strong> Used for search and retrieval when a result needs current information. May receive a search query built from your request and the relevant declared preferences, which can include dietary constraints.</li>
       </ul>
       <p>
         These processors receive context in order to answer a request. They do not receive your intori account. We reach both companies through their developer APIs, not through their consumer products. We send them context to answer your request. We do not send it for model training, and we do not ask them to train on it. What each company does with data it receives through its API is governed by that company&apos;s own terms. If our use changes, we will update this policy first.
@@ -314,7 +314,7 @@ const Privacy: NextPage = () => {
         <li>Skip questions or choose what answers to provide.</li>
         <li>View, correct, or delete a declared dietary or household constraint.</li>
         <li>Pause, edit, or delete local context.</li>
-        <li>Grant or turn off consent for sensitive topics in your permission ledger, under Everything we hold. Turning one off changes what intori may ask you next. It does not delete helper context that already exists.</li>
+        <li>Grant or turn off consent for sensitive topics in your permission ledger, under Everything we hold. Turning one off changes what intori may ask you next. It does not delete result context that already exists.</li>
         <li>Grant or withdraw permission for intori to send your context to an AI processor.</li>
         <li>Download a copy of your data, clear what intori has learned about you, or delete your account, from the You tab.</li>
         <li>Approve a connected app, or disconnect one, in Connected apps under Your data.</li>
@@ -328,7 +328,7 @@ const Privacy: NextPage = () => {
         You can delete your intori account yourself. In the app, open the You tab and choose Delete your account. You can also reach it from Everything we hold. On the web, email <a href="mailto:contact@tuum.tech">contact@tuum.tech</a> and we will delete the account.
       </p>
       <p>
-        Deleting your account removes your answers, declared preferences, declared dietary constraints, local context, helper results, and connected app grants, except for records we must keep for legal, accounting, security, or fraud-prevention reasons. If you signed in with Apple, deleting your account also revokes the Sign in with Apple token, so intori no longer holds an active sign-in relationship with your Apple ID.
+        Deleting your account removes your answers, declared preferences, declared dietary constraints, local context, results, and connected app grants, except for records we must keep for legal, accounting, security, or fraud-prevention reasons. If you signed in with Apple, deleting your account also revokes the Sign in with Apple token, so intori no longer holds an active sign-in relationship with your Apple ID.
       </p>
       <p>
         Deletion is permanent. We cannot restore a deleted account. Deleting your intori account does not cancel an App Store subscription. Cancel that separately in your Apple account subscription settings.
@@ -339,7 +339,7 @@ const Privacy: NextPage = () => {
         You can download a copy of your data yourself, in the app and on the web. Open Your data and choose Download everything. intori builds the file straight away and your device downloads it as a JSON file. There is no queue and no waiting for an email.
       </p>
       <p>
-        The export includes your account and sign-in details, your answers, your declared preferences, your declared dietary constraints including whether each one applies to you or to a household member, your local context, your consent records, your helpers and runs, your connected app grants and receipts, and your vibe. If you would rather ask us for it, email <a href="mailto:contact@tuum.tech">contact@tuum.tech</a>.
+        The export includes your account and sign-in details, your answers, your declared preferences, your declared dietary constraints including whether each one applies to you or to a household member, your local context, your consent records, your results and runs, your connected app grants and receipts, and your vibe. If you would rather ask us for it, email <a href="mailto:contact@tuum.tech">contact@tuum.tech</a>.
       </p>
 
       <h2>Retention</h2>
@@ -347,7 +347,7 @@ const Privacy: NextPage = () => {
         We keep information for as long as needed to provide intori, maintain user controls and receipts, prevent abuse, comply with legal obligations, resolve disputes, and enforce agreements.
       </p>
       <p>
-        Session cookies are intended to expire after a limited period. Partner grants may expire or be revoked. Payment, subscription, and transaction records may be retained for accounting, fraud prevention, charge dispute, tax, and legal reasons. Profile, answer, declared constraint, consent, AI result, receipt, and derived records are kept until you delete them, delete your account, or request deletion. Turning off a topic consent changes what intori may ask you next. It does not by itself delete helper context that already exists.
+        Session cookies are intended to expire after a limited period. Partner grants may expire or be revoked. Payment, subscription, and transaction records may be retained for accounting, fraud prevention, charge dispute, tax, and legal reasons. Profile, answer, declared constraint, consent, AI result, receipt, and derived records are kept until you delete them, delete your account, or request deletion. Turning off a topic consent changes what intori may ask you next. It does not by itself delete result context that already exists.
       </p>
       <p>
         We are continuing to define more specific retention periods for each data category.

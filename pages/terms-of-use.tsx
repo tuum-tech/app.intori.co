@@ -23,11 +23,11 @@ const Terms: NextPage = () => {
 
       <h2>What changed in this update</h2>
       <p>
-        This update aligns the 14-day full-access trial with how intori works. No payment method is required to start the trial, the trial begins after your first successful personalized helper result, and it does not turn into a paid subscription automatically. It also explains Beta access, immediate billing when you choose a paid plan, and what remains available after a trial or paid period ends. The AI processors and data providers we use are named in our <Link href="/privacy-policy">Privacy Policy</Link>.
+        This update aligns the 14-day full-access trial with how intori works. No payment method is required to start the trial, the trial begins when you first keep a result, and it does not turn into a paid subscription automatically. It also explains Beta access, immediate billing when you choose a paid plan, and what remains available after a trial or paid period ends. The AI processors and data providers we use are named in our <Link href="/privacy-policy">Privacy Policy</Link>.
       </p>
 
       <p>
-        These Terms of Use (&quot;Terms&quot;) are an agreement between you and Tuum Technologies, Inc. (&quot;Tuum&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) and govern your access to and use of intori, including the intori website, the intori mobile app, mini app experiences, your household preference and context profile, helper results, subscriptions, connected app flows, APIs, and related services (together, the &quot;Services&quot;).
+        These Terms of Use (&quot;Terms&quot;) are an agreement between you and Tuum Technologies, Inc. (&quot;Tuum&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) and govern your access to and use of intori, including the intori website, the intori mobile app, mini app experiences, your household preference and context profile, personalized results, subscriptions, connected app flows, APIs, and related services (together, the &quot;Services&quot;).
       </p>
       <p>
         By using the Services, you agree to these Terms. If you do not agree, do not use the Services.
@@ -43,7 +43,7 @@ const Terms: NextPage = () => {
 
       <h2>2. What intori does</h2>
       <p>
-        intori is a household personalization service. You declare preferences and constraints for your household. intori uses those declared signals to produce daily suggestions with sources attached: what to cook or eat, what to watch, live music and events, and sports. The features that produce those suggestions are called helpers.
+        intori is a household personalization service. You declare preferences and constraints for your household. intori uses those declared signals to produce daily suggestions with sources attached: what to cook or eat, what to watch, live music and events, and sports. The features that produce those suggestions are organized into lanes: Food, Sports, Shows, and Music.
       </p>
       <p>How your declarations are used:</p>
       <ul>
@@ -86,7 +86,7 @@ const Terms: NextPage = () => {
 
       <h2>5. Consent and connected apps</h2>
       <p>
-        Some Services depend on your consent. You may be asked to grant consent for topics, groups, local context, helper access, sharing context with an AI processor, connected app sharing, or other scopes. You may also revoke consent through intori controls.
+        Some Services depend on your consent. You may be asked to grant consent for topics, groups, local context, lane access, sharing context with an AI processor, connected app sharing, or other scopes. You may also revoke consent through intori controls.
       </p>
       <p>
         If you approve a connected app, intori may share a scoped context bundle with that app. Connected apps are independent services, and their own terms and privacy policies may apply after they receive information. We are not responsible for a connected app&apos;s use of information after you authorize sharing, except to the extent required by law or a written agreement with that app.
@@ -121,7 +121,7 @@ const Terms: NextPage = () => {
 
       <h2>8. AI-assisted features</h2>
       <p>
-        Some intori features use AI to summarize context, search sources, generate helper results, or create suggestions. AI outputs may be incomplete, inaccurate, outdated, or unsuitable for your circumstances. You should review and verify AI outputs before relying on them.
+        Some intori features use AI to summarize context, search sources, generate results, or create suggestions. AI outputs may be incomplete, inaccurate, outdated, or unsuitable for your circumstances. You should review and verify AI outputs before relying on them.
       </p>
       <p>
         AI outputs are not legal, medical, financial, tax, investment, or other professional advice. intori does not purchase tickets, contact venues, complete transactions, or make commitments on your behalf unless a feature clearly says it does and you authorize that action.
@@ -155,7 +155,7 @@ const Terms: NextPage = () => {
         intori is sold as a subscription. One subscription covers your whole household.
       </p>
       <p>
-        <strong>Free trial.</strong> Eligible new accounts get a 14-day trial with full access to intori. No payment method is required to start it. The trial begins after intori successfully delivers your first personalized helper result, not when you create an account, complete onboarding, or view a personalized home screen. The trial does not become a paid subscription automatically. When it ends, you must choose a paid plan before intori will create or refresh another personalized helper result.
+        <strong>Free trial.</strong> Eligible new accounts get a 14-day trial with full access to intori. No payment method is required to start it. The trial begins the first time you keep a result, not when you create an account, complete onboarding, view a personalized home screen, or receive a result you do not keep. If you never keep a result, the trial never starts. The trial does not become a paid subscription automatically. When it ends, you must choose a paid plan before intori will create or refresh another personalized result.
       </p>
       <p>
         <strong>Beta access.</strong> We may give testers full access without charge while intori is in Beta. Beta access does not start the 14-day trial. We may end the Beta period or change Beta access after reasonable notice. We may also give a particular account continued Beta or lifetime access at our discretion.
@@ -176,10 +176,10 @@ const Terms: NextPage = () => {
         <strong>What cancellation does.</strong> Cancelling stops the next renewal. It does not end the period you already paid for. You keep paid access until the end of that period, and you are not charged again after that.
       </p>
       <p>
-        <strong>What happens when full access ends.</strong> When your trial or paid period ends, intori stops creating and refreshing personalized helper results until you subscribe again. We do not delete your account, your declared preferences, your declared constraints, or your saved results just because full access ended.
+        <strong>What happens when full access ends.</strong> When your trial or paid period ends, intori stops creating and refreshing personalized results until you subscribe again. We do not delete your account, your declared preferences, your declared constraints, or your saved results just because full access ended.
       </p>
       <p>
-        <strong>What remains available without full access.</strong> You can still sign in, review results already saved to your account, view and manage your profile and account settings, and use available export and deletion controls. These account and privacy controls do not create a new personalized result. New or refreshed personalized helper results require active trial, Beta, lifetime, or paid access.
+        <strong>What remains available without full access.</strong> You can still sign in, review results already saved to your account, view and manage your profile and account settings, and use available export and deletion controls. These account and privacy controls do not create a new personalized result. New or refreshed personalized results require active trial, Beta, lifetime, or paid access.
       </p>
       <p>
         <strong>App Store purchases.</strong> If you subscribe in the intori iOS app, Apple bills you, and the purchase is governed by Apple&apos;s terms, including the Apple Media Services Terms and Conditions. You manage and cancel that subscription in your Apple account subscription settings. We cannot cancel or refund an App Store subscription for you. Send refund requests for App Store purchases to Apple.
@@ -234,7 +234,7 @@ const Terms: NextPage = () => {
 
       <h2>15. Service changes and availability</h2>
       <p>
-        We may add, change, suspend, or discontinue features. We may also impose limits on use, storage, access, helper runs, grants, or APIs. We will try to provide reasonable notice for material changes that negatively affect paid features or privacy-related controls, where practical.
+        We may add, change, suspend, or discontinue features. We may also impose limits on use, storage, access, result runs, grants, or APIs. We will try to provide reasonable notice for material changes that negatively affect paid features or privacy-related controls, where practical.
       </p>
       <p>
         The Services may be unavailable, delayed, or interrupted from time to time.
