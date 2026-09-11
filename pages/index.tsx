@@ -213,7 +213,7 @@ export default function HomePage() {
                 <div className={styles.phoneScreen}>
                   <Image
                     src="/brand/warm/home-today-gameday.jpg"
-                    alt="intori Today screen with a Game Day pick ready to keep or pass on, and a quick question below it"
+                    alt="intori Today screen with a Sports pick ready to keep or pass on, and a quick question below it"
                     width={1206}
                     height={2282}
                     className={styles.phoneShot}
