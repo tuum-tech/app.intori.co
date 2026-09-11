@@ -10,7 +10,7 @@ const FaqPage: NextPage = () => {
     <>
       <SeoHead
         title="FAQ - intori"
-        description="Questions about intori, what arrives each day, the calendar, Credits, and going deeper inside the app."
+        description="Questions about intori, what it watches for, how the calendar works, what it costs, and how the free trial starts."
         canonicalPath="/faq"
         ogImageAlt="intori FAQ preview"
       />
@@ -25,7 +25,7 @@ const FaqPage: NextPage = () => {
                 <p className={styles.heroEyebrow}>Questions</p>
                 <h1 className={styles.faqHeading}>FAQ</h1>
                 <p className={styles.faqIntro}>
-                  A simple guide to intori, what it brings you, how the calendar works, and Credits.
+                  A simple guide to intori, what it watches for, how the calendar works, and what it costs.
                 </p>
               </div>
 

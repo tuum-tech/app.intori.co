@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>intori OG card, v7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<!--
+  Source for public/og/og-forward-v7.jpg. 1800 x 945, matching the
+  ogImageWidth / ogImageHeight defaults in lib/seo.tsx.
+
+  Why this file exists: v6 and everything before it were hand made, with no
+  source in the repo, so the lane words baked into the artwork could not be
+  updated when the lane words changed. That is how og-forward-v6.jpg ended up
+  still saying Game Day, Music Events, Watch Radar and Today's Food. This
+  template makes the card reproducible.
+
+  To regenerate:
+    1. npm run dev
+    2. open http://localhost:3000/og/templates/og-forward-v7.html
+    3. capture the .card element at exactly 1800 x 945, no device pixel scaling
+    4. save as public/og/og-forward-v7.jpg
+
+  OG filenames are versioned on purpose. Scrapers cache image bytes by URL, so
+  new art always ships at a NEW path and older files stay on disk so previously
+  scraped embeds do not 404. Do not overwrite v6.
+
+  Tokens are copied from BRAND.md / pages/index.module.css. Lane accents are
+  artwork only here, never text color.
+-->
+<style>
+  :root {
+    --ink:        #26213E;
+    --ink-soft:   rgba(38, 33, 62, 0.72);
+    --ground:     #FCF8F1;
+    --card:       #FFFFFF;
+    --hairline:   #E9E2D3;
+    --sports:     #F76B15;
+    --music:      #D467FF;
+    --shows:      #60B3D7;
+    --food:       #E5484D;
+    --radius-card: 22px;
+    --sans: 'Schibsted Grotesk', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #E5E1D8; /* only visible outside the card in a browser window */
+  }
+
+  * { box-sizing: border-box; font-family: var(--sans); }
+
+  /* The capture target. Fixed pixel size: this is an image, not a responsive
+     layout, so nothing here should scale with the viewport. */
+  .card {
+    position: relative;
+    width: 1800px;
+    height: 945px;
+    background: var(--ground);
+    display: grid;
+    grid-template-columns: 1fr 700px;
+    align-items: center;
+    gap: 90px;
+    padding: 0 120px;
+    overflow: hidden;
+  }
+
+  /* ── Left column ───────────────────────────────────── */
+
+  .logo {
+    width: 210px;
+    height: auto;
+    display: block;
+    margin-bottom: 76px;
+  }
+
+  .headline {
+    margin: 0;
+    font-size: 96px;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    color: var(--ink);
+  }
+
+  .deck {
+    margin: 44px 0 0;
+    max-width: 620px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.42;
+    color: var(--ink-soft);
+  }
+
+  .deck strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ── Lane grid ─────────────────────────────────────── */
+
+  .lanes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  /* Every lane card is the same height, and the swatch and title rows are a
+     FIXED height. That is what keeps the four titles on a shared baseline: the
+     title's position depends only on the rows above it, both of which are
+     fixed, so nothing below it can move it. The dek gets whatever is left and
+     wraps inside its own row.
+
+     This has to be fixed rows, not a reserved min-height on the dek. With a
+     flexible title row, a dek that outgrows its reservation makes the title
+     row shrink and pulls the title upward, which is exactly the v6 defect:
+     Watch Radar's two line dek knocked its title out of line with Today's
+     Food. Verified by forcing an over-long dek and confirming no title moves. */
+  .lane {
+    display: grid;
+    grid-template-rows: 122px 46px 1fr;
+    row-gap: 0;
+    height: 272px;
+    padding: 34px 36px 32px;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgba(38,33,62,.04), 0 15px 34px -14px rgba(38,33,62,.17);
+  }
+
+  .swatch {
+    width: 62px;
+    height: 62px;
+    border-radius: 17px;
+  }
+
+  .lane-sports .swatch { background: var(--sports); }
+  .lane-music  .swatch { background: var(--music); }
+  .lane-shows  .swatch { background: var(--shows); }
+  .lane-food   .swatch { background: var(--food); }
+
+  .lane-title {
+    align-self: end;
+    margin: 0;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  /* Free to wrap inside its own row without moving anything above it. Keep
+     deks to two lines at this width; a third will overflow the card, which is
+     deliberate, since a silently shifted layout is the harder bug to spot. */
+  .lane-dek {
+    margin: 10px 0 0;
+    align-self: start;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="left">
+    <img class="logo" src="/intori-logo-full.svg" alt="intori" />
+    <h1 class="headline">Something to<br />look forward to.</h1>
+    <p class="deck">
+      Your calendar is full of things you have to do.<br />
+      This is for <strong>the other half</strong>.
+    </p>
+  </div>
+
+  <!-- Locked lane order: Sports, Music, Shows, Food. Food never leads. -->
+  <div class="lanes">
+    <div class="lane lane-sports">
+      <div class="swatch"></div>
+      <h2 class="lane-title">Sports</h2>
+      <p class="lane-dek">Worth staying up for</p>
+    </div>
+    <div class="lane lane-music">
+      <div class="swatch"></div>
+      <h2 class="lane-title">Music</h2>
+      <p class="lane-dek">Who&rsquo;s playing nearby</p>
+    </div>
+    <div class="lane lane-shows">
+      <div class="swatch"></div>
+      <h2 class="lane-title">Shows</h2>
+      <p class="lane-dek">Worth watching tonight</p>
+    </div>
+    <div class="lane lane-food">
+      <div class="swatch"></div>
+      <h2 class="lane-title">Food</h2>
+      <p class="lane-dek">Dinner, decided.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

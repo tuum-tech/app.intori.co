@@ -71,8 +71,13 @@ italic-only face).
 
 ## Asset inventory (live, post-purge 2026-07-23; refreshed 2026-08-27)
 
-- `public/og/og-tonight-v5.jpg` — the current OG card, warm (1800x945).
-  v5 recolors the Watch tile from amber to blue; v4 and earlier stay on disk.
+- `public/og/og-forward-v7.jpg` — the current OG card, warm (1800x945).
+  v7 is the first card carrying the **lane words** (Sports, Music, Shows, Food);
+  v6 and earlier still show the retired helper product names and stay on disk.
+  Unlike every card before it, v7 has a **source in the repo**:
+  `public/og/templates/og-forward-v7.html`, rendered at 1800x945. Regenerate
+  from that template rather than editing the JPEG, and see its header comment
+  for the capture command.
   OG filenames are **versioned on purpose**: scrapers cache image bytes by URL,
   so new card art always ships at a new path and older files stay in place so
   previously-scraped embeds do not 404.

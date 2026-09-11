@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { getSession } from "next-auth/react"
 import { MarketingFooter, MarketingHeader } from '@/components/MarketingChrome'
 import { SeoHead } from '@/lib/seo'
-import { APP_URL, HERO_VARIANT, IOS_BETA_URL } from '@/lib/appLinks'
+import { APP_URL, HERO_VARIANT, IOS_CHANNEL, IOS_URL } from '@/lib/appLinks'
 
 import styles from './index.module.css'
 
@@ -22,41 +22,51 @@ export const getServerSideProps = (async (context) => {
   return { props: {} }
 }) satisfies GetServerSideProps
 
-// The four live helpers, in the locked order: Game Day, Music Events,
-// Watch Radar, then Today's Food. Food never leads. Promise lines come from
-// the app's helperPublicCopy.ts deks; the food card adds its meal-planner
-// deference on purpose.
-const HELPERS = [
+// The four live lanes, in the locked order: Sports, Music, Shows, then Food.
+// Food never leads.
+//
+// Lane words only. Helper product names never appear on a marketing surface,
+// and neither does the word "helper".
+//
+// Three of the four are framed as watching, because watching is what the
+// subscription sells. Food is the deliberate exception: its verbs are "save"
+// and "plan a night", never a calendar add, and it never claims meal planning,
+// recipes, or shopping lists.
+//
+// Music must never imply early, presale, or priority ticket access. There is no
+// presale relationship to back that up. It watches the same public listings you
+// could find yourself, and its value is noticing in time, not getting in first.
+const LANES = [
   {
-    kicker: 'Game Day',
-    title: 'The games that matter to your crew.',
-    body: 'A short daily brief on your teams: what to watch and why it matters, with scores hidden until you want them.',
+    kicker: 'Sports',
+    title: 'The games you would hate to miss.',
+    body: 'intori follows your teams and tells you which nights are worth staying up for, with scores hidden until you want them.',
     image: '/brand/warm/tile-game-day.jpg',
-    alt: "Game Day brief in intori listing three games worth circling on the calendar this week",
+    alt: 'Sports in intori showing an upcoming game with the date and start time, ready to keep or pass on',
     tint: styles.artSports,
   },
   {
-    kicker: 'Music Events',
-    title: 'See who’s playing near you.',
-    body: 'Shows, venues, and artists worth your night, shaped by your taste and the city you choose to share.',
+    kicker: 'Music',
+    title: 'Who’s playing, while the date is still open.',
+    body: 'intori watches for shows near you from artists your household cares about, and tells you early enough that Saturday is still yours to plan.',
     image: '/brand/warm/tile-music-events.jpg',
-    alt: 'Music Events in intori showing a first look at shows people are buying tickets for right now',
+    alt: 'Music in intori showing an upcoming show nearby with the venue and date',
     tint: styles.artMusic,
   },
   {
-    kicker: 'Watch Radar',
-    title: 'Something worth watching tonight.',
-    body: 'Returns, premieres, and what people are talking about, with spoilers kept out of sight.',
+    kicker: 'Shows',
+    title: 'The one you’re both waiting on.',
+    body: 'intori keeps an eye on returns and premieres, and tells you the week one lands, with spoilers kept out of sight.',
     image: '/brand/warm/tile-watch-radar.jpg',
-    alt: 'Watch Radar in intori asking which shows you already follow',
+    alt: 'Shows in intori asking which series you already follow',
     tint: styles.artWatch,
   },
   {
-    kicker: 'Today’s Food',
+    kicker: 'Food',
     title: 'Dinner, decided.',
-    body: 'Three picks shaped by your household’s tastes, budget, and effort, for the nights the plan is blank. Your meal planner keeps its job.',
+    body: 'Three picks shaped by your household’s tastes, budget, and effort, for the nights the plan is blank. Save the ones you like and plan a night around them.',
     image: '/brand/warm/tile-todays-food.jpg',
-    alt: 'Today’s Food in intori showing a first look at easy dinners worth cooking this week',
+    alt: 'Food in intori showing three dinner picks for tonight',
     tint: styles.artFood,
   },
 ]
@@ -76,20 +86,25 @@ const TRUST_CARDS = [
   },
 ]
 
-// Staged iOS CTA. While IOS_BETA_URL is empty the beta reads as a quiet,
-// non-clickable status chip and the web stays primary. Once the env var is
-// set, the beta becomes the primary button and the web CTA drops to ghost.
+// Staged iOS CTA, driven entirely by IOS_CHANNEL in lib/appLinks.ts.
+//
+//   'appstore' -> "Download on the App Store" is primary, web drops to ghost
+//   'beta'     -> "Join the iPhone beta" is primary, web drops to ghost
+//   'none'     -> web is primary, iPhone is a quiet non-clickable status chip
+//
+// The chip is deliberately not a link. Until there is a real destination the
+// site says so plainly rather than collecting taps on a promise.
 function AppCtas() {
-  if (IOS_BETA_URL) {
+  if (IOS_CHANNEL !== 'none') {
     return (
       <>
         <a
-          href={IOS_BETA_URL}
+          href={IOS_URL}
           className={styles.btnPrimary}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Join the iPhone beta
+          {IOS_CHANNEL === 'appstore' ? 'Download on the App Store' : 'Join the iPhone beta'}
         </a>
         <a
           href={APP_URL}
@@ -115,7 +130,7 @@ function AppCtas() {
       </a>
       <span className={styles.chipQuiet}>
         <span className={styles.chipDot} aria-hidden="true" />
-        iPhone beta coming soon
+        iPhone app coming soon
       </span>
     </>
   )
@@ -157,10 +172,10 @@ export default function HomePage() {
     <>
       <SeoHead
         title="intori. Something to look forward to."
-        description="The game worth staying up for. Who's playing nearby. Something worth watching. And yes, dinner. intori brings them to you early enough to say yes."
+        description="intori watches for the things your household would hate to miss. The game worth staying up for. Who's playing nearby. The show you're both waiting on. And yes, dinner. Early enough to say yes."
         canonicalPath="/"
-        ogDescription="The game, who's playing nearby, something worth watching, and yes, dinner. intori brings them to you early enough to say yes."
-        ogImageAlt="intori card reading Something to look forward to, with tiles for Game Day, Music Events, Watch Radar, and Today's Food"
+        ogDescription="intori watches for what your household would hate to miss, and gets it to you early enough to say yes."
+        ogImageAlt="intori card reading Something to look forward to, with tiles for Sports, Music, Shows, and Food"
       />
 
       <div className={styles.page}>
@@ -182,8 +197,8 @@ export default function HomePage() {
                 <span className={styles.ulMusic}>Who&rsquo;s playing 15&nbsp;minutes away on Saturday.</span>{' '}
                 <span className={styles.ulWatch}>The show you&rsquo;re both mid season on.</span>{' '}
                 <span className={styles.ulFood}>And yes, what&rsquo;s for dinner.</span>{' '}
-                intori brings them to you, shaped by what your household actually
-                likes, early enough to say yes.
+                intori watches for them, shaped by what your household actually
+                likes, and tells you early enough to say yes.
               </p>
               <div className={styles.heroCtas}>
                 <AppCtas />
@@ -198,7 +213,7 @@ export default function HomePage() {
                 <div className={styles.phoneScreen}>
                   <Image
                     src="/brand/warm/home-today-gameday.jpg"
-                    alt="intori Today screen with a Game Day pick ready to keep or pass on, and a quick question below it"
+                    alt="intori Today screen with a Sports pick ready to keep or pass on, and a quick question below it"
                     width={1206}
                     height={2282}
                     className={styles.phoneShot}
@@ -212,19 +227,19 @@ export default function HomePage() {
           <section id="today" className={styles.todaySection}>
             <div className={styles.container}>
               <div className={styles.secHead}>
-                <h2 className={styles.secTitle}>What intori brings you</h2>
+                <h2 className={styles.secTitle}>What intori watches for</h2>
                 <p className={styles.secSub}>
-                  These four are live now. Each one learns from what you tell it, and every
-                  pick shows what shaped it.
+                  Four lanes, live now. intori watches them for the things you would hate
+                  to miss, and the ones you keep land on your calendar before they happen.
                 </p>
               </div>
               <div className={styles.todayGrid}>
-                {HELPERS.map((helper) => (
-                  <article key={helper.kicker} className={`${styles.todayCard} ${helper.tint}`}>
+                {LANES.map((lane) => (
+                  <article key={lane.kicker} className={`${styles.todayCard} ${lane.tint}`}>
                     <div className={styles.todayArt}>
                       <Image
-                        src={helper.image}
-                        alt={helper.alt}
+                        src={lane.image}
+                        alt={lane.alt}
                         fill
                         sizes="(max-width: 900px) 100vw, 540px"
                         className={styles.todayArtImage}
@@ -232,10 +247,10 @@ export default function HomePage() {
                     </div>
                     <p className={styles.todayKicker}>
                       <span className={styles.laneMark} aria-hidden="true" />
-                      {helper.kicker}
+                      {lane.kicker}
                     </p>
-                    <h3 className={styles.todayTitle}>{helper.title}</h3>
-                    <p className={styles.todayBody}>{helper.body}</p>
+                    <h3 className={styles.todayTitle}>{lane.title}</h3>
+                    <p className={styles.todayBody}>{lane.body}</p>
                   </article>
                 ))}
               </div>
@@ -367,7 +382,7 @@ export default function HomePage() {
           </section>
 
           {/* Coming Next is deliberately self-contained: when Family Activities
-              ships, this section is deleted and the helper joins the Today grid
+              ships, this section is deleted and the lane joins the Today grid
               above as a fifth card. */}
           <section className={styles.nextSection}>
             <div className={`${styles.container} ${styles.nextInner}`}>
@@ -387,6 +402,56 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* Pricing. The trial trigger is the differentiator and it is real:
+              recordFirstKeepAccessReceipt in the app is the ONLY writer of
+              trialStartedAt, so the clock genuinely starts on the first kept
+              item and a household that never keeps never starts one. Do not
+              soften this to "when you sign up" without changing the app first.
+
+              Amounts mirror src/config/stripeSubscriptionPlans.ts in the app
+              repo: 899 monthly, 7_900 annual. If those move, this moves. */}
+          <section id="pricing" className={styles.priceSection}>
+            <div className={styles.container}>
+              <div className={styles.secHead}>
+                <h2 className={styles.secTitle}>Free until it earns it</h2>
+                <p className={styles.secSub}>
+                  Your 14 days do not start when you sign up. They start the first time
+                  you keep something, so the clock only runs once intori has actually
+                  found you something worth keeping.
+                </p>
+              </div>
+
+              <div className={styles.priceGrid}>
+                <div className={styles.priceCard}>
+                  <p className={styles.pricePlan}>Monthly</p>
+                  <p className={styles.priceAmount}>
+                    $8.99<span className={styles.pricePer}>/month</span>
+                  </p>
+                  <p className={styles.priceNote}>Cancel any time.</p>
+                </div>
+                <div className={`${styles.priceCard} ${styles.priceCardFeature}`}>
+                  <p className={styles.pricePlan}>
+                    Annual
+                    <span className={styles.priceTag}>Save $28</span>
+                  </p>
+                  <p className={styles.priceAmount}>
+                    $79<span className={styles.pricePer}>/year</span>
+                  </p>
+                  <p className={styles.priceNote}>About $28 less than twelve months at the monthly price.</p>
+                </div>
+              </div>
+
+              <div className={styles.priceLapse}>
+                <h3 className={styles.priceLapseTitle}>If you stop paying</h3>
+                <p className={styles.priceLapseBody}>
+                  Everything you already kept stays exactly where it is. Those events live
+                  on your own calendar, on your own device, and they do not depend on us.
+                  What stops is the watching.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section id="start" className={styles.convertSection}>
             <div className={styles.container}>
               <div className={styles.convertLanes} aria-hidden="true">
@@ -397,14 +462,19 @@ export default function HomePage() {
               </div>
               <h2 className={styles.convertTitle}>Start tonight.</h2>
               <p className={styles.convertSub}>
-                {IOS_BETA_URL
-                  ? <>The iPhone beta is open. intori still works on the web too, no install needed.</>
-                  : <>intori works on the web today. The iPhone beta is next, and the button below will say so the moment it&rsquo;s real.</>}
+                {IOS_CHANNEL === 'appstore'
+                  ? <>intori is on the App Store, and it works on the web too, no install needed.</>
+                  : IOS_CHANNEL === 'beta'
+                    ? <>The iPhone beta is open. intori still works on the web too, no install needed.</>
+                    : <>intori works on the web today. The iPhone app is next, and the button below will say so the moment it&rsquo;s real.</>}
               </p>
               <div className={styles.convertCtas}>
                 <AppCtas />
               </div>
-              <p className={styles.convertNote}>Free to try. No app install needed on the web.</p>
+              <p className={styles.convertNote}>
+                14 days free, starting when you keep your first pick. Then $8.99 a month
+                or $79 a year. <a href="#pricing" className={styles.convertNoteLink}>See what a lapse does</a>.
+              </p>
             </div>
           </section>
 

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './styles.module.css'
-import { APP_URL, WORLD_APP_URL } from '@/lib/appLinks'
+import { APP_URL, IOS_CHANNEL, IOS_URL, WORLD_APP_URL } from '@/lib/appLinks'
 
 export function WorldIcon({ size = 17 }: { size?: number }) {
   return (
@@ -32,6 +32,7 @@ export function MarketingHeader() {
             <Link href="/#today" className={styles.navLink}>What it helps with</Link>
             <Link href="/#why" className={styles.navLink}>Why it works</Link>
             <Link href="/#calendar" className={styles.navLink}>Calendar</Link>
+            <Link href="/#pricing" className={styles.navLink}>Pricing</Link>
             <a
               href={APP_URL}
               className={styles.ctaPrimary}
@@ -76,6 +77,21 @@ export function MarketingFooter() {
               World App
             </a>
           </nav>
+          {IOS_CHANNEL === 'appstore' && (
+            <a
+              href={IOS_URL}
+              className={styles.footerBadge}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/brand/app-store-badge.svg"
+                alt="Download intori on the App Store"
+                width={120}
+                height={40}
+              />
+            </a>
+          )}
           <p className={styles.footerCopy}>© {year} intori</p>
         </div>
       </div>

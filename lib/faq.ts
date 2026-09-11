@@ -1,4 +1,4 @@
-import { IOS_BETA_URL } from './appLinks'
+import { IOS_CHANNEL } from './appLinks'
 
 export type FaqItem = {
   question: string
@@ -7,24 +7,31 @@ export type FaqItem = {
 }
 
 // The iPhone answers read the same config as the homepage CTAs, so the FAQ
-// cannot claim the beta is open before it is, or keep saying "coming soon"
-// after it opens. Setting NEXT_PUBLIC_IOS_BETA_URL updates both surfaces at
-// once, with no copy change.
-const IOS_BETA_IS_OPEN = IOS_BETA_URL !== ''
+// cannot claim iOS is available before it is, or keep saying "coming soon"
+// after it ships. Setting NEXT_PUBLIC_IOS_APP_STORE_URL (or the older
+// NEXT_PUBLIC_IOS_BETA_URL) updates both surfaces at once, with no copy change.
+const WHERE_TO_USE_IPHONE_LINE =
+  IOS_CHANNEL === 'appstore'
+    ? "It is also in the World App, and on the App Store for iPhone."
+    : IOS_CHANNEL === 'beta'
+      ? "It is also in the World App, and the iPhone beta is open."
+      : "It is also in the World App. An iPhone app is coming soon."
 
-const WHERE_TO_USE_IPHONE_LINE = IOS_BETA_IS_OPEN
-  ? "It is also in the World App, and the iPhone beta is open."
-  : "It is also in the World App. An iPhone beta is coming soon."
-
-const IPHONE_ANSWER = IOS_BETA_IS_OPEN
-  ? [
-      "Yes. The iPhone beta is open, and you can join it from the homepage.",
-      "intori also works on the web at app.intori.co, with no install needed.",
-    ]
-  : [
-      "Not yet. An iPhone beta is coming soon, and the homepage will say so the moment it opens.",
-      "intori works on the web today at app.intori.co, with no install needed.",
-    ]
+const IPHONE_ANSWER =
+  IOS_CHANNEL === 'appstore'
+    ? [
+        "Yes. intori is on the App Store, and you can download it from the homepage.",
+        "intori also works on the web at app.intori.co, with no install needed.",
+      ]
+    : IOS_CHANNEL === 'beta'
+      ? [
+          "The iPhone beta is open, and you can join it from the homepage.",
+          "intori also works on the web at app.intori.co, with no install needed.",
+        ]
+      : [
+          "Not yet. An iPhone app is coming soon, and the homepage will say so the moment it is live.",
+          "intori works on the web today at app.intori.co, with no install needed.",
+        ]
 
 export const FAQ: FaqItem[] = [
   {
@@ -59,7 +66,7 @@ export const FAQ: FaqItem[] = [
   {
     question: "What can I start with?",
     answer: [
-      "Four areas are live: Game Day, Music Events, Watch Radar, and Today's Food.",
+      "Four lanes are live: Food, Sports, Shows, and Music.",
       "Each one learns what you like, what you avoid, and what actually fits your week."
     ]
   },
@@ -73,7 +80,7 @@ export const FAQ: FaqItem[] = [
   {
     question: "What can intori do right now?",
     answer: [
-      "Four areas are live: Game Day, Music Events, Watch Radar, and Today's Food.",
+      "Four lanes are live: Food, Sports, Shows, and Music.",
       "We are working on one more, for the timely, nearby things a family would be glad to know about before they pass. That one is not live yet, and the site will say so until it is."
     ]
   },
@@ -111,10 +118,24 @@ export const FAQ: FaqItem[] = [
     answer: IPHONE_ANSWER
   },
   {
-    question: "What are Credits?",
+    question: "What does intori cost?",
     answer: [
-      "Credits let you get picks and go deeper on a result.",
-      "New users get a few starter credits free, and you can buy more whenever you want."
+      "intori is $8.99 a month, or $79 a year. One subscription covers your whole household.",
+      "Before that, you get 14 days free. The trial does not start when you sign up. It starts the first time you keep something, so the clock only runs once intori has found you something worth keeping. If you never keep anything, the trial never starts."
+    ]
+  },
+  {
+    question: "What happens if I stop paying?",
+    answer: [
+      "Everything you already kept stays exactly where it is. Those events are on your own calendar, on your own device, and they do not depend on us.",
+      "What stops is the watching. intori stops finding and refreshing new picks until you subscribe again. Your answers, your preferences, and your saved results stay in your account."
+    ]
+  },
+  {
+    question: "Do I need a credit card to start?",
+    answer: [
+      "No. You can start the trial without entering a payment method, and it does not turn into a paid subscription on its own.",
+      "When the trial ends you choose a plan, or you do not. Nothing is charged unless you decide to subscribe."
     ]
   },
   {

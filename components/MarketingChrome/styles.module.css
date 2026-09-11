@@ -158,3 +158,19 @@
     justify-content: center;
   }
 }
+
+/* App Store badge, footer. Only rendered on the 'appstore' iOS channel. Apple's
+   identity guidelines set a minimum badge size and require clear space around
+   it, so this reserves both rather than letting the flex row squeeze it. */
+.footerBadge {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  margin: 0 4px;
+  line-height: 0;
+}
+
+.footerBadge img {
+  height: 40px;
+  width: auto;
+}
